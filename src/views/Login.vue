@@ -50,7 +50,6 @@
     },
     methods: {
       handleLogin() {
-        console.log('Logging in with', this.login, this.senha);
         this.errorMessage = '';
         const loginData = {
           login: this.login,
@@ -59,7 +58,6 @@
 
         axios.post('http://localhost:8000/api/V1/api-petshop/usuarios/login', loginData)
           .then(response => {
-            console.log('Login realizado com sucesso:', response.data);
             const token = response.data.token;
             localStorage.setItem('authToken', token);
             this.$router.push('/home');

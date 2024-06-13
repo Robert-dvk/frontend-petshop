@@ -20,12 +20,11 @@
     </nav>
     <nav class="navbar nav-color2 justify-content-center">
       <router-link class="navbar-brand" :to="{ name: 'CadastroPets'}">Pets</router-link>
-      <!-- <router-link v-if="userType === 'Admin'" class="navbar-brand" :to="{ name: 'AgendamentosAdmin' }">Agendamentos</router-link>
-      <router-link v-if="userType === 'Cliente'" class="navbar-brand" :to="{ name: 'AgendamentosCliente' }">Agendamentos</router-link>
-      <router-link v-if="userType === 'Admin'" class="navbar-brand" :to="{ name: 'Servicos' }">Serviços</router-link>
-      <router-link v-if="userType === 'Cliente'" class="navbar-brand" :to="{ name: 'Historico' }">Histórico</router-link>
+      <router-link class="navbar-brand" :to="{ name: 'Agendamentos' }">Agendamentos</router-link>
+      <router-link v-if="userType === 'Cliente'" class="navbar-brand" :to="{ name: 'Perfil' }">Meu Perfil</router-link>
+      <!--<router-link v-if="userType === 'Admin'" class="navbar-brand" :to="{ name: 'Servicos' }">Serviços</router-link>
       <router-link v-if="userType === 'Admin'" class="navbar-brand" :to="{ name: 'Usuarios' }">Usuários</router-link>
-      <router-link v-if="userType !== 'Admin'" class="navbar-brand" :to="{ name: 'MeuPerfil' }">Meu perfil</router-link> -->
+       -->
     </nav>
   </template>
   <script>
