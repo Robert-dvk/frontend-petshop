@@ -4,7 +4,7 @@
     <div class="container mt-2">
       <div class="d-flex justify-content-left">
         <router-link
-          to="/cadastrousuarios"
+          to="/admcadastro"
           class="btn"
           style="
             width: 150px;
