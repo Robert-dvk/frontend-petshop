@@ -37,6 +37,7 @@
               <tr>
                 <th scope="col">Data</th>
                 <th scope="col">Hora</th>
+                <th scope="col">Usuário</th>
                 <th scope="col">Pet</th>
                 <th scope="col">Serviço</th>
                 <th scope="col">Valor</th>
@@ -51,6 +52,7 @@
               >
                 <td>{{ formatDate(agendamento.data) }}</td>
                 <td>{{ agendamento.hora }}</td>
+                <td>{{ agendamento.usuario_nome }}</td>
                 <td>{{ agendamento.pet_nome }}</td>
                 <td>{{ agendamento.servico_nome }}</td>
                 <td>{{ agendamento.servico_valor }}</td>
@@ -215,7 +217,7 @@ export default {
           .then((response) => {
             const user = response.data.usuario;
             this.user = user;
-            this.fetchAgendamentos(token);
+            this.fetchAgendamentos(token, user);
             this.getPets(token, user);
             this.getServicos();
           })
@@ -231,13 +233,21 @@ export default {
         this.$router.push("/");
       }
     },
-    fetchAgendamentos(token) {
+    fetchAgendamentos(token, user) {
+      let url = `http://localhost:8000/api/V1/api-petshop/agenda/listByUser`;
+      if (user.isadmin) {
+        url = `http://localhost:8000/api/V1/api-petshop/agenda/listar`;
+      }
+      
       axios
-        .get(`http://localhost:8000/api/V1/api-petshop/agenda/listByUser`, {
+        .get(url, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          const allAgendamentos = response.data.data;
+          let allAgendamentos = response.data.data;
+          if(user.isadmin) {
+            allAgendamentos = response.data.data.data;
+          }
           const agendamentosWithStatus = allAgendamentos.map((agendamento) => ({
             ...agendamento,
             status: this.getStatus(agendamento.data),
@@ -322,7 +332,6 @@ export default {
       }
     },
     openEditModal(agendamento) {
-      console.log("Agendamento ", agendamento);
       this.editingId = agendamento.idagenda;
       this.editData = {
         pet: agendamento.idpet,
@@ -330,7 +339,6 @@ export default {
         data: agendamento.data,
         hora: agendamento.hora,
       };
-      console.log("Edit data ", this.editData);
       this.updateEditTotal();
       this.showEditModal = true;
     },
@@ -344,7 +352,6 @@ export default {
           data: this.editData.data,
           hora: moment(this.editData.hora, "HH:mm").format("HH:mm"),
         };
-
         axios
           .put(urlAgenda, agendamento, {
             headers: { Authorization: `Bearer ${token}` },
@@ -371,7 +378,7 @@ export default {
                   this.editTotal = 0;
                   this.showEditModal = false;
                   alert("Agendamento editado com sucesso!");
-                  this.fetchAgendamentos(token);
+                  this.fetchUserData();
                 })
                 .catch((error) => {
                   console.error("Erro ao editar serviço:", error);
@@ -387,7 +394,7 @@ export default {
               this.editTotal = 0;
               this.showEditModal = false;
               alert("Agendamento editado com sucesso!");
-              this.fetchAgendamentos(token);
+              this.fetchUserData();
             }
           })
           .catch((error) => {

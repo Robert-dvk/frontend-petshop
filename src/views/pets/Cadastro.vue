@@ -4,7 +4,7 @@
     <div class="container mt-2"> 
       <div class="d-flex justify-content-left">
         <router-link to="/cadastropets" class="btn" style="width: 150px; border-color: #b3856d; background-color: #b3856d; color: white;">Cadastrar</router-link>
-        <router-link to="/listagempets" class="btn" style="width: 150px;  border-color: #b3856d;">Meus Pets</router-link>
+        <router-link to="/listagempets" class="btn" style="width: 150px;  border-color: #b3856d;">Pets</router-link>
       </div>     
       <div class="full-screen-div">
         <h3 class="text-config mt-5">Insira os dados do seu pet!</h3>
@@ -153,7 +153,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
   },

@@ -18,7 +18,7 @@
             background-color: #b3856d;
             color: white;
           "
-          >Meus Pets</router-link
+          >Pets</router-link
         >
       </div>
       <div class="full-screen-div">
@@ -193,7 +193,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
     fetchPets(token, usuario) {
@@ -246,7 +246,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
     selecionarPetParaEdicao(pet) {
@@ -279,7 +279,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
     formatDate(date) {

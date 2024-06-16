@@ -109,7 +109,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
     fetchAgendamentos(token, userId) {

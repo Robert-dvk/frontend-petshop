@@ -128,7 +128,7 @@ export default {
       servicos: [],
       total: 0,
       user: null,
-      today: new Date().toISOString().split("T")[0], // Data atual
+      today: new Date().toISOString().split("T")[0],
     };
   },
   mounted() {
@@ -156,7 +156,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
     getPets(token, usuario) {
@@ -245,7 +245,6 @@ export default {
                 headers: { Authorization: `Bearer ${token}` },
               })
               .then((response) => {
-                console.log("Serviço agendado com sucesso:", response.data);
                 this.formData = {
                   pet: "",
                   servico: "",
@@ -268,7 +267,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
   },

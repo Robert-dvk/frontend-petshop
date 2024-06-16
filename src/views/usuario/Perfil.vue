@@ -4,7 +4,7 @@
     <div class="container mt-2">
       <div class="d-flex justify-content-left">
         <router-link
-          to="/agendamentos"
+          to="/perfil"
           class="btn"
           style="
             width: 150px;
@@ -147,7 +147,7 @@ export default {
         console.error(
           "Nenhum token encontrado, redirecionando para a página de login"
         );
-        this.$router.push("/login");
+        this.$router.push("/");
       }
     },
     atualizarPerfil() {
@@ -236,7 +236,6 @@ body,
   border-right: none;
 }
 
-/* Modal styles */
 .modal-overlay {
   position: fixed;
   top: 0;

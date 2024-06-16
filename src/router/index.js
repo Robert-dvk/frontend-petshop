@@ -8,6 +8,8 @@ import Agendamentos from '../views/agenda/Agendamentos.vue'
 import MeusAgendamentos from '../views/agenda/MeusAgendamentos.vue'
 import Historico from '../views/agenda/Historico.vue'
 import Perfil from '../views/usuario/Perfil.vue'
+import AdmCadastro from '../views/usuario/AdmCadastro.vue'
+import ListagemUsuarios from '../views/usuario/ListagemUsuarios.vue'
 
 const routes = [
   {
@@ -54,6 +56,16 @@ const routes = [
     path: '/perfil',
     name: 'Perfil',
     component: Perfil
+  },
+  {
+    path: '/admcadastro',
+    name: 'AdmCadastro',
+    component: AdmCadastro
+  },
+  {
+    path: '/listagemusuarios',
+    name: 'ListagemUsuarios',
+    component: ListagemUsuarios
   },
 ]
 
